@@ -1,0 +1,37 @@
+{
+    "presets": [
+        "@babel/env"
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-proposal-class-properties",
+            {
+                "loose": false
+            }
+        ],
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "regenerator": true
+            }
+        ],
+        "add-module-exports"
+    ],
+    "env": {
+        "test": {
+            "plugins": [
+                "./src/utils/arrow-function-coverage-fix.js",
+                "istanbul"
+            ],
+            "ignore": [
+                "./src/utils/arrow-function-coverage-fix.js"
+            ],
+            "sourceMaps": true,
+            "retainLines": true
+        },
+        "development": {
+            "sourceMaps": true,
+            "retainLines": true
+        }
+    }
+}
