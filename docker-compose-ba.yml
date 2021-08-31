@@ -4,14 +4,6 @@ services:
     command: run dev
     environment:
     - NODE_ENV=development
-    - ADMIN_URL=https://authadminqc.berkadia.com/auth/realms
-    - API_URL=https://authadminqc.berkadia.com/auth/admin/realms
-    - LOGIN_URL=https://loginqc.berkadia.com/auth/realms
-    - REDIQ_LOGIN_URL=https://loginqc.rediq.com/auth/realms
-    - CLIENT_ID=admin-cli
-    - BERKADIA_CLIENT_SECRET=4f892341-8d36-4880-af69-f5cd0fcce8fc
-    - REDIQ_CLIENT_SECRET=e2a8457e-07ec-4761-bf09-03bd4ecbcc5a
-    - MAX_SAFE_NUMBER=2147483647
     env_file: .env
     image: ${DOCKER_REG}${SERVICE_NAME}
     network_mode: bridge

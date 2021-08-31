@@ -7,16 +7,6 @@ services:
     command: run dev
     environment:
     - NODE_ENV=development
-    - ADMIN_URL=https://host.docker.internal:8080/auth/realms
-    - REDIQ_ADMIN_URL=https://host.docker.internal:8080/auth/realms
-    - API_URL=https://host.docker.internal:8080/auth/admin/realms
-    - REDIQ_API_URL=https://host.docker.internal:8080/auth/admin/realms
-    - LOGIN_URL=https://host.docker.internal:8080/auth/realms
-    - REDIQ_LOGIN_URL=https://host.docker.internal:8080/auth/realms
-    - CLIENT_ID=admin-cli
-    - BERKADIA_CLIENT_SECRET=58015b6c-e6f7-4db7-9548-94eccd818a54
-    - REDIQ_CLIENT_SECRET=58015b6c-e6f7-4db7-9548-94eccd818a54
-    - MAX_SAFE_NUMBER=2147483647
     env_file: .env
     image: ${DOCKER_REG}${SERVICE_NAME}
     ports:
