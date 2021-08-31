@@ -1,5 +1,4 @@
 import express from 'express';
-import Boom from 'express-boom';
 import { Router } from './routes';
 import { Log, LogMiddleware } from './services';
 
@@ -12,7 +11,6 @@ export class Service {
 
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json()) // To parse the incoming requests with JSON payloads
-    app.use(Boom());
     app.use(LogMiddleware);
 
     // Add the routes to the app
@@ -54,18 +52,6 @@ export class Service {
       Log.info(`Server started on http://${DOCKER_HOST}:${this.port}`);
     });
 
-    if (
-      this.env === 'development' ||
-      this.env === 'testing' ||
-      this.env === 'test'
-    ) {
-      process.env.isAppReadyForTest = true;
-
-
-      // uncomment below line in local
-      process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-    }
-
     this.app.set('HEALTH_STATUS', 'READY');
     Log.info('Initialization successful. Service is Ready.');
 
@@ -105,8 +91,8 @@ if (
   (process.env.NODE_ENV === 'production' ||
     process.env.NODE_ENV === 'development')
 ) {
-  Log.info('atursapiSvc: Server started');
+  Log.info('workers: Server started');
   Server.start();
 } else {
-  Log.error('atursapiSvc: Server not started.');
+  Log.error('workers: Server not started.');
 }
